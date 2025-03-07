@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Usuarios</title>
+  </head>
+  <body>
+    <h1>Gestión de Usuarios</h1>
+
+    <button onclick="obtenerUsuarios()">Cargar la lista de Usuarios</button>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Valor</th>
+          <th>Email</th>
+          <th>URL Referencia</th>
+          <th>Fecha Creación</th>
+          <th>Usuario Creador</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="usuarios-lista"></tbody>
+    </table>
+
+    <h2>Agregar o Actualizar Usuario</h2>
+
+    <form id="usuario-form">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" required /><br />
+
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion" required /><br />
+
+      <label for="valor">Valor:</label>
+      <input type="text" id="valor" required /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required /><br />
+
+      <label for="url_referencia">URL Referencia:</label>
+      <input type="text" id="url_referencia" required /><br />
+
+      <label for="fecha_creacion">Fecha de Creación:</label>
+      <input type="datetime-local" id="fecha_creacion" required /><br />
+
+      <label for="usuario_creador">Usuario Creador:</label>
+      <input type="text" id="usuario_creador" required /><br />
+
+      <button type="button" id="guardar" onclick="agregarUsuario()">
+        Agregar
+      </button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
