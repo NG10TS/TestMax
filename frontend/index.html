@@ -48,7 +48,12 @@
       <input type="datetime-local" id="fecha_creacion" required /><br />
 
       <label for="usuario_creador">Usuario Creador:</label>
-      <input type="text" id="usuario_creador" required /><br />
+      <select id="usuario_creador" required>
+        <option value="">Seleccione una opción</option>
+        <option value="1">Usuario Tipo 1</option>
+        <option value="2">Usuario Tipo 2</option>
+      </select>
+      <br />
 
       <button type="button" id="guardar" onclick="agregarUsuario()">
         Agregar
