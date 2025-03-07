@@ -43,7 +43,25 @@ try {
         http_response_code(201);
         exit();
     }
-
+    if ($method === "GET") { 
+        if (isset($_GET["id"])) { // Obtener un usuario por ID
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+            $stmt->execute([$_GET["id"]]);
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($usuario) {
+                echo json_encode($usuario);
+            } else {
+                echo json_encode(["error" => "Usuario no encontrado"]);
+                http_response_code(404);
+            }
+        } else { // Obtener todos los usuarios
+            $stmt = $pdo->query("SELECT * FROM users");
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }
+        exit();
+    }
+    
     if ($method === "PUT" || $method === "PATCH") { // Actualizar usuario
         if (empty($data["id"]) || empty($data["titulo"]) || empty($data["descripcion"]) || empty($data["valor"]) || 
             empty($data["email"]) || empty($data["url_referencia"]) || empty($data["fecha_creacion"]) || 

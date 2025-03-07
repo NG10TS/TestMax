@@ -21,6 +21,20 @@ async function obtenerUsuarios() {
     alert(error.message);
   }
 }
+// Obtener usuarion por id
+async function obtenerUsuarioPorId(id) {
+  try {
+    const response = await fetch(`${API_URL}?id=${id}`);
+    if (!response.ok) throw new Error("Usuario no encontrado");
+
+    const usuario = await response.json();
+    console.log("Usuario encontrado:", usuario);
+
+    // Aquí puedes mostrar los datos en el HTML o usarlos como necesites
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 // Agregar un nuevo usuario (POST)
 async function agregarUsuario() {
