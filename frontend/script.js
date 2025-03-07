@@ -8,7 +8,7 @@ async function obtenerUsuarios() {
 
     const data = await response.json();
     const lista = document.getElementById("usuarios-lista");
-    lista.innerHTML = ""; // Limpiar la lista antes de agregar nuevos datos
+    lista.innerHTML = "";
 
     data.forEach((user) => {
       const li = document.createElement("li");
@@ -24,11 +24,11 @@ async function obtenerUsuarios() {
 
 // Agregar un nuevo usuario (POST)
 async function agregarUsuario() {
-  const titulo = document.getElementById("titulo").value;
-  const descripcion = document.getElementById("descripcion").value;
-  const valor = document.getElementById("valor").value;
-  const email = document.getElementById("email").value;
-  const url_referencia = document.getElementById("url_referencia").value;
+  const titulo = document.getElementById("titulo").value.trim();
+  const descripcion = document.getElementById("descripcion").value.trim();
+  const valor = document.getElementById("valor").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const url_referencia = document.getElementById("url_referencia").value.trim();
   const fecha_creacion = document.getElementById("fecha_creacion").value;
   const usuario_creador = document.getElementById("usuario_creador").value;
 
@@ -41,7 +41,12 @@ async function agregarUsuario() {
     !fecha_creacion ||
     !usuario_creador
   ) {
-    alert("Por favor, completa todos los campos.");
+    alert("Todos los campos son obligatorios.");
+    return;
+  }
+
+  if (!/^[\w.-]+@[\w.-]+\.\w{2,}$/.test(email)) {
+    alert("El email no es válido.");
     return;
   }
 
